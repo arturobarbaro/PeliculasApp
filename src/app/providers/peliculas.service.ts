@@ -15,7 +15,6 @@ export class PeliculasService {
   ) { }
 
   getPopulares() {
-      console.log('a')
       const url =`${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
       return this._http.jsonp(url, '').pipe(map( (res: any) =>  res.results ));
   }
