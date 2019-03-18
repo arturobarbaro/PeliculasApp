@@ -9,6 +9,7 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
 
 import { APP_ROUTING } from './app.routes';
+import { PeliculaImagenPipe } from './pipes/pelicula-imagen.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { APP_ROUTING } from './app.routes';
     HomeComponent,
     NavbarComponent,
     PeliculaComponent,
-    BuscarComponent
+    BuscarComponent,
+    PeliculaImagenPipe
   ],
   imports: [
     BrowserModule,
