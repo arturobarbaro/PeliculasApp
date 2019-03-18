@@ -22,6 +22,7 @@
                     <p class="card-text">{{pelicula.overview |slice:0:250}}...</p>
                     <button type="button"
                             name="button"
+                            [routerLink]="['/pelicula', pelicula.id, 'buscar', buscar]"
                             class="btn btn-outline-primary">Ver más...</button>
                 </div>
             </div>
