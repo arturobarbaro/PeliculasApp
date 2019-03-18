@@ -20,11 +20,11 @@ export class PeliculasService {
 
   getCartelera(){
       let desde = new Date();
-      let hasta = new Date(desde.getDate()+7);
+      let hasta = new Date();
+      hasta.setDate(hasta.getDate()+7);
       let desdeStr=`${desde.getFullYear()}-${desde.getMonth()+1}-${desde.getDate()}`;
       let hastaStr=`${hasta.getFullYear()}-${hasta.getMonth()+1}-${hasta.getDate()}`;
-      //primary_release_date.gte=${desdeStr}&primary_release_date.lte=${hastaStr}&
-      const url =`${this.urlMoviedb}/discover/movie?api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
+      const url =`${this.urlMoviedb}/discover/movie?primary_release_date.gte=${desdeStr}&primary_release_date.lte=${hastaStr}&api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
       return this._http.jsonp(url, '').pipe(map( (res: any) =>  res.results ));
   }
 
@@ -33,7 +33,7 @@ export class PeliculasService {
       return this._http.jsonp(url, '').pipe(map( (res: any) =>  res.results ));
   }
   getPopularesNinos() {
-      const url =`${this.urlMoviedb}/discover/movie?certification.lte=G&sort_by=popularity.desc&api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
+      const url =`${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apikey}&language=es&callback=JSONP_CALLBACK`;
       return this._http.jsonp(url, '').pipe(map( (res: any) =>  res.results ));
   }
 
