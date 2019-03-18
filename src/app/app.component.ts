@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'PeliculasApp';
 
   constructor(public _ps:PeliculasService){
-    this._ps.getPopulares().subscribe(data=>console.log(data))
+      this._ps.getPopulares().subscribe(data=>console.log(data))
   }
 }

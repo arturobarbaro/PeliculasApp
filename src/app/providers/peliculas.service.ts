@@ -11,13 +11,24 @@ export class PeliculasService {
   private urlMoviedb:string ='https://api.themoviedb.org/3';
 
   constructor(
-      private _http:HttpClient
+      public _http:HttpClient
   ) { }
 
   getPopulares() {
+      console.log('a')
       const url =`${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}$language=es&callback=JSONP_CALLBACK`;
       return this._http.jsonp(url, '').pipe(map( (res: any) =>  res.results ));
   }
+
+  buscarPelicula( texto:string ){
+
+   let url = `${ this.urlMoviedb }/search/movie?query=${ texto }&sort_by=popularity.desc&api_key=${ this.apikey }&language=es&callback=JSONP_CALLBACK`;
+
+   return this._http.jsonp( url, '' ).pipe(
+               map( res=> console.log(res))
+           );
+ }
+
 
 
 }
